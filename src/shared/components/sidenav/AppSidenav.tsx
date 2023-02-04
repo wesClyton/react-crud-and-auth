@@ -1,6 +1,6 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
-import { useDrawerContext } from '../../contexts';
+import { useAppThemeContext, useDrawerContext } from '../../contexts';
 
 
 interface  IAppSidenavProps {
@@ -42,6 +42,7 @@ export const AppSidenav: React.FC<IAppSidenavProps> = ({ children }) => {
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   const { drawerOptions, isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
+  const { toggleTheme, themeName } = useAppThemeContext();
 
   return (
     <>
@@ -67,6 +68,17 @@ export const AppSidenav: React.FC<IAppSidenavProps> = ({ children }) => {
             </List> 
           </Box>
 
+          <Box>
+            <List component="nav">
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                  <Icon>{themeName === 'dark' ? 'light_mode' : 'dark_mode'}</Icon>
+                </ListItemIcon>
+                <ListItemText primary={themeName === 'dark' ? 'Modo claro' : 'Modo escuro'} />
+              </ListItemButton>
+            </List>
+          </Box>
+          
         </Box>
       </Drawer>
 
