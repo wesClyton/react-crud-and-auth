@@ -1,12 +1,6 @@
 import { Api } from '../axios-config';
 
-interface IPessoaDetails {
-  id: number;
-  email: string;
-  cidadeId: number;
-}
-
-interface IPessoaList {
+export interface IPessoaDetails {
   id: number;
   name: string;
   fullName: string;
@@ -14,14 +8,22 @@ interface IPessoaList {
   cidadeId: number;
 }
 
-type TPessoasComTotalCount = {
+export interface IPessoaList {
+  id: number;
+  name: string;
+  fullname: string;
+  email: string;
+  cidadeId: number;
+}
+
+export type TPessoasComTotalCount = {
   data: IPessoaList[];
   totalCount: number;
 }
 
 const getAll = async (page = 1, limit = 10, filter = ''): Promise<TPessoasComTotalCount | Error> => {
   try {
-    const urlRelative = `/pessoas?_page=${page}&_limit=${limit}&fullName_like=${filter}`;
+    const urlRelative = `/pessoas?_page=${page}&_limit=${limit}&fullname_like=${filter}`;
     const { data, headers } = await Api.get(urlRelative);
 
     if(data) {
