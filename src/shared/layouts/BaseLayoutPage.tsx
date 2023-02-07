@@ -8,7 +8,7 @@ interface IBasePageLayoutProps {
   children?: React.ReactNode;
 }
 
-export const BasePageLayout: React.FC<IBasePageLayoutProps> = ({ children, titulo, toolsBar }) => {
+export const BasePageLayout = ({ children, titulo, toolsBar }: IBasePageLayoutProps) => {
 
   const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));

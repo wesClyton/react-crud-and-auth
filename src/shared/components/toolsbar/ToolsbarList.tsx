@@ -9,14 +9,14 @@ interface IToolsbarListProps {
   onClickNewButton?: () => void;
 }
 
-export const ToolsbarList: React.FC<IToolsbarListProps> = ({
+export const ToolsbarList = ({
   searchText = '',
   showInputSearch = false,
   changeSearchText,
   newButtonText = 'Novo',
   showNewButton = true,
   onClickNewButton,
-}) => {
+}: IToolsbarListProps) => {
 
   const theme = useTheme();
 

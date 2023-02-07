@@ -24,7 +24,7 @@ interface IToolsbarDetailsProps {
   onClickSaveAndBackButton?: () => void;
 }
 
-export const ToolsbarDetails: React.FC<IToolsbarDetailsProps> = ({
+export const ToolsbarDetails = ({
   newButtontext = 'Novo',
 
   showNewButton = true,
@@ -44,7 +44,7 @@ export const ToolsbarDetails: React.FC<IToolsbarDetailsProps> = ({
   onClickDeleteButton,
   onClickSaveButton,
   onClickSaveAndBackButton
-}) => {
+}: IToolsbarDetailsProps) => {
 
   const theme = useTheme();
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));

@@ -14,7 +14,7 @@ interface IListItemLinkProps {
   onClick: (() => void) | undefined;
 }
 
-const ListItemLink: React.FC<IListItemLinkProps> = ({ to, icon, label, onClick }) => {
+const ListItemLink = ({ to, icon, label, onClick }: IListItemLinkProps) => {
   
   const navigate = useNavigate();
   const resolvedPath = useResolvedPath(to);
@@ -36,7 +36,7 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({ to, icon, label, onClick }
 };
 
 
-export const AppSidenav: React.FC<IAppSidenavProps> = ({ children }) => {
+export const AppSidenav = ({ children }: IAppSidenavProps) => {
 
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
