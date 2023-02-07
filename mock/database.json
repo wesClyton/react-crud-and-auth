@@ -1,105 +1,105 @@
 {
   "pessoas": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Weslley",
       "fullname": "Weslley Clyton Hinsch",
       "email": "weslley@email.com",
       "cidadeId": 11
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "João",
       "fullname": "João Silva",
       "email": "joao@email.com",
       "cidadeId": 11
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Pedro",
       "fullname": "Pedro Silva",
       "email": "pedro@email.com",
       "cidadeId": 11
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Carlos",
       "fullname": "Carlos Silva",
       "email": "carlos@email.com",
       "cidadeId": 11
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Maria",
       "fullname": "Maria Silva",
       "email": "maria@email.com",
       "cidadeId": 11
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Pedro Santana",
       "fullname": "Pedro Santana",
       "email": "pedro.santana@email.com",
       "cidadeId": 11
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Cleber",
       "fullname": "Cleber Silva",
       "email": "cleber@email.com",
       "cidadeId": 11
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Luiza",
       "fullname": "Luiza Silva",
       "email": "luiza@email.com",
       "cidadeId": 11
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "Rafael",
       "fullname": "Rafael Silva",
       "email": "rafael@email.com",
       "cidadeId": 11
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Maria Rosa",
       "fullname": "Maria Rosa Silva",
       "email": "maria.rosa@email.com",
       "cidadeId": 11
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Jonas",
       "fullname": "Jonas Silva",
       "email": "jonas@email.com",
       "cidadeId": 11
     },
     {
-      "id": "12",
+      "id": 12,
       "name": "Eduardo",
       "fullname": "Eduardo Silva",
       "email": "eduardo@email.com",
       "cidadeId": 11
     },
     {
-      "id": "13",
+      "id": 13,
       "name": "Joaquin",
       "fullname": "Joaquin Silva",
       "email": "joaquin@email.com",
       "cidadeId": 11
     },
     {
-      "id": "14",
+      "id": 14,
       "name": "Inácio",
       "fullname": "Inácio Silva",
       "email": "inacio@email.com",
       "cidadeId": 11
     },
     {
-      "id": "15",
+      "id": 15,
       "name": "Ana",
       "fullname": "Ana Silva",
       "email": "ana@email.com",

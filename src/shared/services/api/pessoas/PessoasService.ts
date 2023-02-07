@@ -77,8 +77,7 @@ const updateById = async (requestData: IPessoaDetails):Promise<void | Error> => 
 
 const deleteById = async (id: number):Promise<void | Error> => {
   try {
-    const urlRelative = `/pessoas?/id=${id}`;
-    await Api.delete(urlRelative);
+    await Api.delete(`/pessoas/${id}`);
   } catch (error) {
     console.log(error);
     return new Error((error as {message: string}).message || 'Erro ao deletar o registro.');
