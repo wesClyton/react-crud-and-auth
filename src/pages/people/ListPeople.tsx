@@ -1,4 +1,4 @@
-import { LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
+import { LinearProgress, MenuItem, Pagination, Paper, Select, SelectChangeEvent, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TableRow } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ToolsbarList } from '../../shared/components';
@@ -9,11 +9,11 @@ import { PessoasService, TPessoasComTotalCount } from '../../shared/services/api
 
 export const ListPeople = () => {
 
-  const limitRows = 5;
 
   const [seachParams, setSearchParams] = useSearchParams();
   const [listPeople, setListPeople] = useState<TPessoasComTotalCount>();
   const [isLoading, setIsLoading] = useState(true);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const { debounce } = useDebounce(1000);
 
@@ -25,18 +25,22 @@ export const ListPeople = () => {
     return Number(seachParams.get('page') || '1');
   }, [seachParams]);
 
+  const handleChangeRowsPerPage = (event: SelectChangeEvent) => {
+    setRowsPerPage(Number(event.target.value));
+  };
+
   useEffect(() => {
     setIsLoading(true);
 
     debounce(() => {
-      PessoasService.getAll(page, limitRows, search)
+      PessoasService.getAll(page, rowsPerPage, search)
         .then((result) => {
           setIsLoading(false);
           result instanceof Error ? alert(result.message) : setListPeople(result);
         });
     });
 
-  }, [search, page, limitRows]);
+  }, [search, page, rowsPerPage]);
 
   return (
     <BasePageLayout
@@ -59,6 +63,19 @@ export const ListPeople = () => {
               <TableCell>Ações</TableCell>
               <TableCell>Nome Completo</TableCell>
               <TableCell>Email</TableCell>
+              <TableCell align="right">
+                <Select
+                  size="small"
+                  value={rowsPerPage.toString()}
+                  label="Por Página"
+                  onChange={handleChangeRowsPerPage}
+                >
+                  <MenuItem value={5}>5</MenuItem>
+                  <MenuItem value={10}>10</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                </Select>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -66,7 +83,7 @@ export const ListPeople = () => {
               <TableRow key={row.id}>
                 <TableCell>Ações</TableCell>
                 <TableCell>{row.fullname}</TableCell>
-                <TableCell>{row.email}</TableCell>
+                <TableCell colSpan={2}>{row.email}</TableCell>
               </TableRow>
             ) )}
           </TableBody>
@@ -82,12 +99,12 @@ export const ListPeople = () => {
               </TableRow>
             )}
 
-            { listPeople?.totalCount && (listPeople?.totalCount > 0 && listPeople?.totalCount > limitRows) && (
+            { listPeople?.totalCount && (listPeople?.totalCount > 0 && listPeople?.totalCount > rowsPerPage) && (
               <TableRow>
-                <TableCell colSpan={3}>
+                <TableCell colSpan={3} align="center">
                   <Pagination
                     page={page}
-                    count={ Math.ceil(listPeople?.totalCount / limitRows) }
+                    count={ Math.ceil(listPeople?.totalCount / rowsPerPage) }
                     onChange={ 
                       (_, newPage) => setSearchParams(
                         { busca: search, page: newPage.toString() }, 
@@ -98,11 +115,10 @@ export const ListPeople = () => {
                 </TableCell>
               </TableRow>
             )}
-
           </TableFooter>
         </Table>
       </TableContainer>
-      
+  
     </BasePageLayout>
   );
 };
