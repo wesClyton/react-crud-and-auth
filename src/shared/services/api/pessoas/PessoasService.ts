@@ -43,7 +43,7 @@ const getAll = async (page = 1, limit = 10, filter = ''): Promise<TPessoasComTot
 
 const getById = async (id: number):Promise<IPessoaDetails | Error> => {
   try {
-    const urlRelative = `/pessoas?/id=${id}`;
+    const urlRelative = `/pessoas/${id}`;
     const { data } = await Api.get(urlRelative);
 
     return data ?  data : new Error('Erro ao consultar o registro.');

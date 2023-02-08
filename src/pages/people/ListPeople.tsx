@@ -31,9 +31,6 @@ export const ListPeople = () => {
   };
 
   const handleDelete = (id: number) => {
-
-    console.log('id:', id);
-
     if(confirm('Realmente deseja apagar?')) {
       PessoasService.deleteById(id).then(result => {
         if(result instanceof Error) {
@@ -74,6 +71,7 @@ export const ListPeople = () => {
         showInputSearch
         newButtonText='Nova'
         searchText={search}
+        onClickNewButton={() => navigate('/pessoas/detalhe/nova')}
         changeSearchText={search => setSearchParams(
           { busca: search, pagina: '1'}, 
           { replace: true }
@@ -110,7 +108,7 @@ export const ListPeople = () => {
                     <Icon>delete</Icon>
                   </IconButton>
 
-                  <IconButton size="small" onClick={ ()=> navigate(`/pessoas/detalhes/${row.id}`)}>
+                  <IconButton size="small" onClick={ ()=> navigate(`/pessoas/detalhe/${row.id}`)}>
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>
