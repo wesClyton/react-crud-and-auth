@@ -7,7 +7,7 @@ type TVTextFieldProps = TextFieldProps & {
   name: string;
 }
 
-export const VTextField = ({ name, label, ...rest }: TVTextFieldProps) => {
+export const VTextField = ({ name, ...rest }: TVTextFieldProps) => {
 
   const { fieldName, registerField, defaultValue, error, clearError } = useField(name);
 
@@ -19,19 +19,17 @@ export const VTextField = ({ name, label, ...rest }: TVTextFieldProps) => {
       getValue: () => value,
       setValue: (_, newValue) => setValue(newValue),
     });
-
   }, [registerField, fieldName, value]);
 
   return (
     <TextField
-      label={label}
       variant='outlined'
       value={value}
       error={!!error}
       helperText={error}
       defaultValue={defaultValue}
       onKeyDown={() => error ? clearError() : undefined}
-      onChange={e => setValue(e.target.value) }
+      onChange={e => { setValue(e.target.value); rest.onChange?.(e);} }
       { ...rest }
     />
   );

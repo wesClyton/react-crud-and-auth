@@ -3,7 +3,7 @@ import { Api } from '../axios-config';
 export interface IPessoaDetails {
   id: number;
   name: string;
-  fullName: string;
+  fullname: string;
   email: string;
   cidadeId: number;
 }
