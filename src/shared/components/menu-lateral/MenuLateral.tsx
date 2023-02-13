@@ -10,6 +10,11 @@ interface IListItemLinkProps {
   label: string;
   onClick: (() => void) | undefined;
 }
+
+interface  IMenuLateralProps {
+  children: React.ReactNode;
+}
+
 const ListItemLink: React.FC<IListItemLinkProps> = ({ to, icon, label, onClick }) => {
   const navigate = useNavigate();
 
@@ -33,7 +38,8 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({ to, icon, label, onClick }
 };
 
 
-export const MenuLateral: React.FC = ({ children }) => {
+export const MenuLateral = ({ children }: IMenuLateralProps) => {
+
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 

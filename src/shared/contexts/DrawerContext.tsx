@@ -13,13 +13,17 @@ interface IDrawerContextData {
   setDrawerOptions: (newDrawerOptions: IDrawerOption[]) => void;
 }
 
+interface  IDrawerContextProps {
+  children: React.ReactNode;
+}
+
 const DrawerContext = createContext({} as IDrawerContextData);
 
 export const useDrawerContext = () => {
   return useContext(DrawerContext);
 };
 
-export const DrawerProvider: React.FC = ({ children }) => {
+export const DrawerProvider = ({ children }: IDrawerContextProps ) => {
   const [drawerOptions, setDrawerOptions] = useState<IDrawerOption[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 

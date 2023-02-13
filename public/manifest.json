@@ -1,6 +1,6 @@
 {
-  "short_name": "CRUD Auth APP",
-  "name": "CRUD and Authentication",
+  "short_name": "Cadastros",
+  "name": "Cadastros básicos",
   "icons": [
     {
       "src": "favicon.ico",
