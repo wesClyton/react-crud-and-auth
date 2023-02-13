@@ -5,47 +5,46 @@ import { useCallback, useRef } from 'react';
 export const useVForm = () => {
   const formRef = useRef<FormHandles>(null);
 
+  const isSavingAndClose = useRef(false);
   const isSavingAndNew = useRef(false);
-  const isSavingAndBack = useRef(false);
+
 
   const handleSave = useCallback(() => {
+    isSavingAndClose.current = false;
     isSavingAndNew.current = false;
-    isSavingAndBack.current = false;
-
-    formRef.current?.submitForm();
-  }, []);
-
-  const handleSaveAndBack = useCallback(() => {
-    console.log('Save and back');
-    isSavingAndNew.current = false;
-    isSavingAndBack.current = true;
-    
     formRef.current?.submitForm();
   }, []);
 
   const handleSaveAndNew = useCallback(() => {
+    isSavingAndClose.current = false;
     isSavingAndNew.current = true;
-    isSavingAndBack.current = false;
-    
     formRef.current?.submitForm();
   }, []);
+
+  const handleSaveAndClose = useCallback(() => {
+    isSavingAndClose.current = true;
+    isSavingAndNew.current = false;
+    formRef.current?.submitForm();
+  }, []);
+
 
   const handleIsSaveAndNew = useCallback(() => {
     return isSavingAndNew.current;
   }, []);
 
-  const handleIsSaveAndBack = useCallback(() => {
-    return isSavingAndBack.current;
+  const handleIsSaveAndClose = useCallback(() => {
+    return isSavingAndClose.current;
   }, []);
 
 
-  return { 
+  return {
     formRef,
 
     save: handleSave,
-    saveAndBack: handleSaveAndBack,
     saveAndNew: handleSaveAndNew,
+    saveAndClose: handleSaveAndClose,
+
     isSaveAndNew: handleIsSaveAndNew,
-    isSaveAndBack: handleIsSaveAndBack
+    isSaveAndClose: handleIsSaveAndClose,
   };
 };
