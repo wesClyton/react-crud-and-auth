@@ -1,12 +1,6 @@
 {
   "pessoas": [
     {
-      "id": 3,
-      "nomeCompleto": "",
-      "email": "carlos@gmail.com",
-      "cidadeId": 1
-    },
-    {
       "id": 5,
       "nomeCompleto": "Alfredo Pereira",
       "email": "alfredo@gmail.com",
@@ -79,22 +73,22 @@
       "nomeCompleto": "Alfredo Silva"
     },
     {
-      "id": 155,
-      "nomeCompleto": "José de Souza",
-      "email": "jose@gmail.com",
-      "cidadeId": "4"
-    },
-    {
       "nomeCompleto": "Ana Silva",
       "email": "ana@gmail.com",
       "cidadeId": "1",
       "id": 156
+    }
+  ],
+  "cidades": [
+    {
+      "id": 1,
+      "nome": "Umuarama",
+      "estado": "Paraná"
     },
     {
-      "id": 157,
-      "nomeCompleto": "Jorge",
-      "email": "jorginho@gmail.com",
-      "cidadeId": "5"
+      "nome": "Joinville",
+      "estado": "Santa Catarina",
+      "id": 2
     }
   ]
 }
