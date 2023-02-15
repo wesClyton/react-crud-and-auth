@@ -3,19 +3,17 @@ import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 
+import { CidadesService } from '../../shared/services/api/cidades/CidadesService';
 import { VTextField, VForm, useVForm, IVFormErrors } from '../../shared/forms';
 import { FerramentasDeDetalhe } from '../../shared/components';
 import { LayoutBaseDePagina } from '../../shared/layouts';
-import { CidadesService } from '../../shared/services/api/cidades/CidadesService';
 
 
 interface IFormData {
   nome: string;
-  estado: string;
 }
 const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
   nome: yup.string().required().min(3),
-  estado: yup.string().required().min(2),
 });
 
 export const DetalheDeCidades: React.FC = () => {
@@ -46,7 +44,6 @@ export const DetalheDeCidades: React.FC = () => {
     } else {
       formRef.current?.setData({
         nome: '',
-        estado: ''
       });
     }
   }, [id]);
@@ -70,7 +67,7 @@ export const DetalheDeCidades: React.FC = () => {
                 if (isSaveAndClose()) {
                   navigate('/cidades');
                 } else {
-                  navigate(`/Cidades/detalhe/${result}`);
+                  navigate(`/cidades/detalhe/${result}`);
                 }
               }
             });
@@ -120,7 +117,7 @@ export const DetalheDeCidades: React.FC = () => {
 
   return (
     <LayoutBaseDePagina
-      titulo={id === 'nova' ? 'Nova Cidade' : nome}
+      titulo={id === 'nova' ? 'Nova cidade' : nome}
       barraDeFerramentas={
         <FerramentasDeDetalhe
           textoBotaoNovo='Nova'
@@ -156,20 +153,9 @@ export const DetalheDeCidades: React.FC = () => {
                 <VTextField
                   fullWidth
                   name='nome'
-                  disabled={isLoading}
                   label='Nome'
-                  onChange={e => setNome(e.target.value)}
-                />
-              </Grid>
-            </Grid>
-
-            <Grid container item direction="row" spacing={2}>
-              <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                <VTextField
-                  fullWidth
-                  name='estado'
-                  label='Estado'
                   disabled={isLoading}
+                  onChange={e => setNome(e.target.value)}
                 />
               </Grid>
             </Grid>

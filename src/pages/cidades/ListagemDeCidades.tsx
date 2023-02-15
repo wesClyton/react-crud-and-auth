@@ -2,11 +2,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+import { IListagemCidade, CidadesService, } from '../../shared/services/api/cidades/CidadesService';
 import { FerramentasDaListagem } from '../../shared/components';
 import { LayoutBaseDePagina } from '../../shared/layouts';
-import { useDebounce } from '../../shared/hooks';
 import { Environment } from '../../shared/environment';
-import { CidadesService, IListagemCidade } from '../../shared/services/api/cidades/CidadesService';
+import { useDebounce } from '../../shared/hooks';
 
 
 export const ListagemDeCidades: React.FC = () => {
@@ -67,7 +67,7 @@ export const ListagemDeCidades: React.FC = () => {
 
   return (
     <LayoutBaseDePagina
-      titulo='Listagem de Cidades'
+      titulo='Listagem de cidades'
       barraDeFerramentas={
         <FerramentasDaListagem
           mostrarInputBusca
@@ -82,24 +82,22 @@ export const ListagemDeCidades: React.FC = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Ações</TableCell>
-              <TableCell>Cidade</TableCell>
-              <TableCell>Estado</TableCell>
+              <TableCell width={100}>Ações</TableCell>
+              <TableCell>Nome</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map(row => (
               <TableRow key={row.id}>
-                <TableCell width={100}>
+                <TableCell>
                   <IconButton size="small" onClick={() => handleDelete(row.id)}>
                     <Icon>delete</Icon>
                   </IconButton>
-                  <IconButton size="small" onClick={() => navigate(`/Cidades/detalhe/${row.id}`)}>
+                  <IconButton size="small" onClick={() => navigate(`/cidades/detalhe/${row.id}`)}>
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>
                 <TableCell>{row.nome}</TableCell>
-                <TableCell>{row.estado}</TableCell>
               </TableRow>
             ))}
           </TableBody>

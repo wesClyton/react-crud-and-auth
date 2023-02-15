@@ -4,10 +4,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDrawerContext } from '../shared/contexts';
 import {
   Dashboard,
-  DetalheDeCidades,
   DetalheDePessoas,
-  ListagemDeCidades,
   ListagemDePessoas,
+  DetalheDeCidades,
+  ListagemDeCidades,
 } from '../pages';
 
 export const AppRoutes = () => {
